@@ -20,12 +20,12 @@ for(int j=0;j<n;j++)
      else if(a-j<0&&a+j<n)
     {
         if(ar[a+j]==1)c++;
-        // cout<<"1"<<"\n";
+      
     }
     else if(a+j>=n&&a-j>=0)
     {
         if(ar[a-j]==1)c++;
-        // cout<<"2"<<"\n";
+       
     }
 }
 cout<<c<<"\n";
