@@ -1,0 +1,89 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+typedef long long ll;
+typedef vector<ll> vll;
+typedef pair<ll, ll> pll;
+#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+#define fl(i,a,b) for (ll i = a; i <= b; i++)
+#define rfl(i,a,b) for (ll i= a; i >= b; i--)
+#define fastio                      \
+  ios_base::sync_with_stdio(false); \
+  cin.tie(NULL);                    \
+  cout.tie(NULL);
+
+void show(vector<ll> v)
+{
+  for (auto x : v)
+    cout << x << " ";
+  cout << endl;
+}
+void seeout(int a[], ll n)
+{
+  // int sumt = 0;
+  fl(i, 0, n)
+  {
+    cout << a[i] << " ";
+    // sumt += a[i];
+  }
+  cout << endl;
+  // cout << sumt;
+}
+
+
+
+int main()
+{
+  fastio;
+
+  ll n, m;
+  cin >> n >> m;
+  vll adj[n + 1];
+  ll o = m;
+  while (o--)
+  {
+    ll x, y;
+    cin >> x >> y;
+    adj[x].PB(y);
+    adj[y].PB(x);
+  }
+  vll indegree(n + 1, 0);
+  for (int i = 1; i <= n; i++) {
+    for (auto it : adj[i]) {
+      indegree[it]++;
+    }
+  }
+  ll count = 0;
+  while (1)
+  {
+
+    vll temp;
+    ll stop = 0;
+    fl(i, 1, n)
+    {
+      if (indegree[i] == 1)
+      {
+        temp.PB(i);
+      }
+    }
+    if (temp.size() == 0 ) {cout << count; return 0;}
+    else
+      count++;
+
+    for (auto t : temp)
+    {
+      indegree[t]--;
+      for (auto it : adj[t])
+      {
+        indegree[it]--;
+      }
+    }
+
+  }
+
+
+}
