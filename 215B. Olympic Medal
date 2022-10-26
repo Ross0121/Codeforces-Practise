@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+typedef double ll;
+typedef vector<ll> vll;
+typedef pair<ll, ll> pll;
+#define fi first
+#define se second
+#define pb push_back
+#define mp make_pair
+#define all(x) (x).begin(),(x).end()
+#define fl(i,a,b) for (ll i = a; i < b; i++)
+#define rfl(i,a,b) for (ll i= a; i >=b; i--)
+#define fastio                      \
+  ios_base::sync_with_stdio(false); \
+  cin.tie(NULL);                    \
+  cout.tie(NULL);
+
+int main()
+{
+  fastio;
+  ll n, m, k;
+  cin >> n;
+  ll r1 = INT_MIN, p1 = INT_MIN, p2 = INT_MAX;
+  fl(i, 0, n)
+  {
+    ll x;
+    cin >> x;
+    if (r1 < x)r1 = x;
+  }
+
+  cin >> m;
+  fl(i, 0, m)
+  {
+    ll y;
+    cin >> y;
+    if (y > p1)p1 = y;
+  }
+
+  cin >> k;
+
+  fl(i, 0, k)
+  {
+    ll z;
+    cin >> z;
+    if (p2 > z)p2 = z;
+  }
+  ll a, b;
+  cin >> a >> b;
+  ll ki = a / b;
+  ll ans = sqrt((r1 * r1) / (1 + (p2 / p1) * ki));
+  cout << fixed;
+  cout << setprecision(12);
+  cout << ans;
+  return 0;
+}
+
+
+
+
+
